@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* One family: off-white paper, soft blues, one strong blue, navy ink. */
+  --color-paper: #fbf9f4;
+  --color-paper-deep: #f4f1e9;
+  --color-ink: #13203d;
+  --color-ink-soft: #46526b;
+  --color-ink-faint: #7a8396;
+  --color-sky-50: #f1f5fd;
+  --color-sky-100: #e3ebfb;
+  --color-sky-200: #c9d8f7;
+  --color-sky-300: #a7c0f1;
+  --color-blue: #2453d6;
+  --color-blue-hover: #1c45bb;
+  --color-blue-deep: #12308f;
+  --color-line: rgba(19, 32, 61, 0.1);
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-hand: var(--font-caveat), "Comic Sans MS", cursive;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+::selection {
+  background: var(--color-sky-200);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 0.2s,
+    box-shadow 0.25s;
+}
+.btn-primary {
+  background: var(--color-blue);
+  color: #fff;
+  box-shadow: 0 10px 24px -12px rgba(36, 83, 214, 0.7);
+}
+.btn-primary:hover {
+  background: var(--color-blue-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px -14px rgba(36, 83, 214, 0.8);
+}
+.btn-ghost {
+  background: #fff;
+  color: var(--color-ink);
+  border: 1.5px solid var(--color-line);
+}
+.btn-ghost:hover {
+  border-color: var(--color-sky-300);
+  transform: translateY(-2px);
+}
+.btn .arrow {
+  transition: transform 0.25s;
+}
+.btn:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- Cards ---------- */
+.lift {
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s;
+}
+.lift:hover {
+  transform: translateY(-6px) rotate(var(--hover-rot, 0deg));
+  box-shadow: 0 24px 40px -24px rgba(19, 32, 61, 0.35);
+}
+
+/* Clearly marked photo placeholder: striped, labelled, never mistaken for a real photo. */
+.placeholder {
+  background-color: var(--color-sky-50);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 12px,
+    rgba(36, 83, 214, 0.06) 12px 24px
+  );
+  border: 2px dashed var(--color-sky-300);
+}
+
+/* ---------- Reveal on scroll ----------
+   Content is only hidden once JS has marked <html class="js">, so it stays
+   visible if scripts fail. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--delay, 0ms);
+}
+.js [data-reveal="scale"] {
+  transform: translateY(18px) scale(0.96);
+}
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hand-drawn doodles draw themselves in once revealed. */
+.doodle path,
+.doodle circle,
+.doodle line,
+.doodle polyline,
+.doodle ellipse {
+  stroke-dasharray: var(--len, 600);
+  stroke-dashoffset: 0;
+}
+.js .doodle-draw path,
+.js .doodle-draw circle,
+.js .doodle-draw line,
+.js .doodle-draw polyline,
+.js .doodle-draw ellipse {
+  stroke-dashoffset: var(--len, 600);
+  transition: stroke-dashoffset 1.6s cubic-bezier(0.65, 0, 0.35, 1) var(--delay, 200ms);
+}
+.js .is-in .doodle-draw path,
+.js .is-in .doodle-draw circle,
+.js .is-in .doodle-draw line,
+.js .is-in .doodle-draw polyline,
+.js .is-in .doodle-draw ellipse,
+.js .doodle-draw.is-in path,
+.js .doodle-draw.is-in circle,
+.js .doodle-draw.is-in line,
+.js .doodle-draw.is-in polyline,
+.js .doodle-draw.is-in ellipse {
+  stroke-dashoffset: 0;
+}
+
+/* Gentle float for small decorative stickers. */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: translateY(-8px) rotate(var(--rot, 0deg));
+  }
+}
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Organic blob morph behind the hero photo. */
+@keyframes morph {
+  0%,
+  100% {
+    border-radius: 58% 42% 46% 54% / 48% 56% 44% 52%;
+  }
+  50% {
+    border-radius: 44% 56% 58% 42% / 56% 44% 56% 44%;
+  }
+}
+.blob {
+  border-radius: 58% 42% 46% 54% / 48% 56% 44% 52%;
+  animation: morph 14s ease-in-out infinite;
+}
+
+/* Subject card doodle wiggles on hover. */
+.subject-card .doodle {
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.subject-card:hover .doodle {
+  transform: rotate(-4deg) scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .js .doodle-draw * {
+    stroke-dashoffset: 0 !important;
+  }
+  .lift:hover,
+  .btn:hover {
+    transform: none;
+  }
+}
