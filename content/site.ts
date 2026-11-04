@@ -109,6 +109,7 @@ export type Tutor = {
   name: string;
   role: string;
   headline: string; // short line on the name pill
+  intro: string; // one-line introduction, built only from `credentials`
   photo: string | null; // null = placeholder until a real photo is supplied
   credentials: string[];
   teaches: string[];
@@ -123,7 +124,8 @@ export const TUTORS: Tutor[] = [
     name: "Mr. Charlie",
     role: "Founder & lead tutor",
     headline: "Founder, 8+ years",
-    photo: "/charlie.jpeg",
+    intro: "Waterloo Software Engineering grad. Energetic, approachable, and still teaches every week.",
+    photo: "/charlie-portrait.jpg",
     credentials: [
       "University of Waterloo, Software Engineering",
       "8+ years tutoring",
@@ -136,6 +138,7 @@ export const TUTORS: Tutor[] = [
     name: "Mr. Noah",
     role: "Tutor",
     headline: "Waterloo Engineering grad",
+    intro: "Electrical Engineering with Dean's Honours, and a former Waterloo teaching assistant.",
     photo: null,
     credentials: [
       "University of Waterloo, Electrical Engineering (BASc), Dean's Honours",
@@ -149,6 +152,7 @@ export const TUTORS: Tutor[] = [
     name: "Mr. Kuby",
     role: "Tutor",
     headline: "7+ years, senior math",
+    intro: "BCIT Electrical Engineering grad. Senior math, IB Math and SAT/ACT prep.",
     photo: null,
     credentials: [
       "BCIT, Electrical Engineering (BSc)",

@@ -41,7 +41,7 @@ const SUBJECTS = [
 ];
 
 const field =
-  "mt-1.5 w-full rounded-2xl border border-line bg-white px-4 py-3 text-[16px] text-ink outline-none transition-[border-color,box-shadow] placeholder:text-ink-faint focus:border-blue focus:shadow-[0_0_0_4px_rgba(36,83,214,0.12)]";
+  "mt-1.5 w-full rounded-2xl border border-line bg-white px-4 py-3 text-[16px] text-ink outline-none transition-[border-color,box-shadow] placeholder:text-ink-faint focus:border-blue focus:shadow-[0_0_0_4px_rgba(70,101,158,0.18)]";
 const label = "text-[14px] font-semibold text-ink";
 
 export default function Booking() {
@@ -105,7 +105,7 @@ export default function Booking() {
 
   return (
     <section id="book" className="px-2 pb-6 sm:px-4">
-      <div className="relative mx-auto max-w-[1320px] overflow-hidden rounded-[40px] bg-sky-100 px-4 py-20 sm:rounded-[56px] sm:px-6 lg:px-8 lg:py-24">
+      <div className="relative mx-auto max-w-[1320px] overflow-hidden rounded-[36px] bg-sky-100 px-4 py-14 sm:rounded-[56px] sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         <div className="blob pointer-events-none absolute -right-40 -top-40 h-[420px] w-[420px] bg-sky-200/70" aria-hidden="true" />
         <div className="relative mx-auto grid max-w-[1200px] gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
           {/* Left: choose */}
@@ -114,7 +114,7 @@ export default function Booking() {
             <h2
               data-reveal
               style={{ ["--delay" as string]: "80ms" } as React.CSSProperties}
-              className="mt-1 font-display text-[38px] font-extrabold leading-[1.05] tracking-[-0.025em] sm:text-[52px]"
+              className="mt-1 font-display text-[34px] font-extrabold leading-[1.05] tracking-[-0.025em] sm:text-[52px]"
             >
               Try a lesson. It&apos;s on us.
             </h2>
@@ -130,9 +130,9 @@ export default function Booking() {
                   <label
                     key={k.id}
                     id={k.anchor}
-                    className={`block cursor-pointer rounded-[28px] border-2 p-6 transition-all duration-300 ${
+                    className={`block cursor-pointer rounded-[24px] border-2 p-5 transition-all duration-300 sm:rounded-[28px] sm:p-6 ${
                       on
-                        ? "border-blue bg-white shadow-[0_20px_36px_-24px_rgba(36,83,214,0.6)]"
+                        ? "border-blue bg-white shadow-[0_20px_36px_-26px_rgba(52,80,127,0.55)]"
                         : "border-transparent bg-white/60 hover:bg-white"
                     }`}
                   >
@@ -182,11 +182,11 @@ export default function Booking() {
           <div className="relative">
           <Sparkle className="float absolute -left-5 -top-7 z-10 w-9 text-blue" style={{ ["--rot" as string]: "-12deg" }} />
           <Sparkle className="float absolute -right-3 top-1/3 z-10 hidden w-6 text-blue sm:block" style={{ animationDelay: "-3s" }} />
-          <span className="absolute -right-2 -top-5 z-10 rotate-[5deg] rounded-full bg-blue px-4 py-2 text-[13px] font-bold text-white shadow-[0_12px_24px_-12px_rgba(36,83,214,0.8)]">
+          <span className="absolute -right-2 -top-5 z-10 rotate-[5deg] rounded-full bg-blue px-4 py-2 text-[13px] font-bold text-white shadow-[0_12px_24px_-14px_rgba(52,80,127,0.7)]">
             Free · no commitment
           </span>
           <Squiggle className="absolute -bottom-6 left-10 z-10 w-28 rotate-[-6deg] text-blue" />
-          <div data-reveal="scale" className="rounded-[36px] bg-white p-6 shadow-[0_30px_60px_-36px_rgba(19,32,61,0.45)] sm:p-9">
+          <div data-reveal="scale" className="rounded-[36px] bg-white p-6 shadow-[0_30px_60px_-36px_rgba(30,42,68,0.45)] sm:p-9">
             {status === "sent" || status === "sent-email" ? (
               <div className="flex min-h-[420px] flex-col items-center justify-center text-center" role="status">
                 <span className="grid h-16 w-16 place-items-center rounded-full bg-sky-100 text-blue">
@@ -252,7 +252,7 @@ export default function Booking() {
                         <label
                           key={c.id}
                           className={`cursor-pointer rounded-xl px-2 py-2.5 text-center text-[14px] font-semibold transition-all duration-200 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-blue ${
-                            on ? "bg-white text-blue shadow-[0_6px_14px_-8px_rgba(19,32,61,0.4)]" : "text-ink-soft hover:text-ink"
+                            on ? "bg-white text-blue shadow-[0_6px_14px_-8px_rgba(30,42,68,0.4)]" : "text-ink-soft hover:text-ink"
                           }`}
                         >
                           <input

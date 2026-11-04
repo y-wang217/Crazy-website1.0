@@ -1,13 +1,14 @@
+import Image from "next/image";
 import { REASONS } from "@/content/site";
 import { PhotoPlaceholder } from "./Brand";
-import { CurlyArrow } from "./Doodles";
+import { CurlyArrow, Sparkle } from "./Doodles";
 
 const d = (ms: number) => ({ ["--delay" as string]: `${ms}ms` }) as React.CSSProperties;
 
 function Icon({ name }: { name: (typeof REASONS)[number]["icon"] }) {
   const p = { fill: "none", stroke: "currentColor", strokeWidth: 2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   return (
-    <svg viewBox="0 0 24 24" className="h-7 w-7" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="h-6 w-6" aria-hidden="true">
       {name === "one" && (
         <>
           <circle {...p} cx="12" cy="7.5" r="3.5" />
@@ -37,59 +38,77 @@ function Icon({ name }: { name: (typeof REASONS)[number]["icon"] }) {
   );
 }
 
+// No card grid here: an organic photo collage on one side, an open, staggered
+// list on the other, held together by whitespace.
 export default function WhyUs() {
   return (
-    <section id="why" className="px-2 sm:px-4">
-      <div className="relative mx-auto max-w-[1320px] overflow-hidden rounded-[40px] bg-sky-50 px-4 py-20 sm:rounded-[56px] sm:px-6 lg:px-8 lg:py-28">
-        <div className="mx-auto grid max-w-[1200px] gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          {/* Left: statement + photo */}
-          <div className="relative">
-            <p data-reveal className="font-hand text-[26px] text-blue">why AP Academy</p>
-            <h2
-              data-reveal
-              style={d(80)}
-              className="mt-1 font-display text-[38px] font-extrabold leading-[1.05] tracking-[-0.025em] sm:text-[52px]"
-            >
-              Built around one student.{" "}
-              <span className="relative whitespace-nowrap text-blue">
-                Yours.              </span>
-            </h2>
-            <p data-reveal style={d(160)} className="mt-5 max-w-[44ch] text-[17px] leading-relaxed text-ink-soft">
-              No group pace to keep up with and no script to follow. Your tutor learns how you think, then teaches
-              to that.
-            </p>
+    <section id="why" className="relative overflow-hidden py-16 lg:py-24">
+      <div className="mx-auto grid max-w-[1200px] items-center gap-12 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:px-8">
+        {/* Photo collage */}
+        <div className="relative order-2 mx-auto w-full max-w-[460px] lg:order-1">
+          <div className="blob absolute -inset-[6%] bg-sky-100" aria-hidden="true" />
+          <Sparkle className="float absolute -top-2 right-[8%] w-8 text-dusty" style={{ ["--rot" as string]: "14deg" }} />
 
-            <div data-reveal="scale" style={d(240)} className="relative mt-10 max-w-[400px]">
-              <PhotoPlaceholder
-                label="Real photo of a student in a live online lesson"
-                className="aspect-[5/4] rotate-[-2deg] rounded-[32px]"
+          <div data-reveal="photo" className="relative">
+            <PhotoPlaceholder
+              label="A real student in a live online lesson"
+              className="aspect-[5/4] rounded-[120px_36px_120px_36px] border-[6px] border-white sm:aspect-[4/4]"
+            />
+          </div>
+
+          <div data-reveal="photo" style={d(200)} className="absolute -bottom-8 -right-2 w-[44%] sm:-right-8">
+            <div className="lift relative aspect-square overflow-hidden rounded-full border-[6px] border-white shadow-[0_20px_40px_-26px_rgba(30,42,68,0.5)]">
+              <Image
+                src="/charlie-portrait.jpg"
+                alt="Mr. Charlie smiling"
+                fill
+                sizes="200px"
+                className="object-cover object-[50%_30%]"
               />
-              <div className="pointer-events-none absolute -right-4 -top-10 hidden items-center gap-1 text-blue sm:flex">
-                <span className="font-hand text-[22px]">live, not recorded</span>
-                <CurlyArrow draw className="w-14 rotate-[70deg]" style={d(600)} />
-              </div>
             </div>
           </div>
 
-          {/* Right: four reasons, staggered */}
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="pointer-events-none absolute -bottom-16 left-0 flex items-center gap-1 sm:-left-4">
+            <span className="max-w-[16ch] font-hand text-[21px] leading-tight text-blue">the founder still teaches every week</span>
+            <CurlyArrow draw className="w-12 -rotate-[30deg] text-dusty" style={d(500)} />
+          </div>
+        </div>
+
+        {/* Statement + reasons */}
+        <div className="order-1 lg:order-2">
+          <p data-reveal className="font-hand text-[24px] text-blue sm:text-[26px]">why AP Academy</p>
+          <h2
+            data-reveal
+            style={d(80)}
+            className="mt-1 font-display text-[34px] font-extrabold leading-[1.05] tracking-[-0.025em] sm:text-[52px]"
+          >
+            Built around one student. <span className="text-blue">Yours.</span>
+          </h2>
+          <p data-reveal style={d(160)} className="mt-4 max-w-[46ch] text-[16px] leading-relaxed text-ink-soft sm:text-[17px]">
+            No group pace to keep up with and no script to follow. Your tutor learns how you think, then teaches to
+            that.
+          </p>
+
+          <ul className="mt-8 grid gap-x-10 gap-y-7 sm:mt-10 sm:grid-cols-2 sm:gap-y-10">
             {REASONS.map((r, i) => (
-              <article
+              <li
                 key={r.title}
                 data-reveal
-                style={d(i * 100)}
-                className={`lift rounded-[28px] bg-white p-7 ring-1 ring-line ${i % 2 === 1 ? "sm:translate-y-12" : ""} ${
-                  i === 0 ? "[--hover-rot:-0.6deg]" : "[--hover-rot:0.6deg]"
-                }`}
+                style={d(i * 90)}
+                className={`flex gap-4 sm:block ${i % 2 === 1 ? "sm:mt-10" : ""}`}
               >
-                <span className="grid h-14 w-14 place-items-center rounded-2xl bg-sky-100 text-blue">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-[16px_22px_16px_22px] bg-sky-100 text-blue sm:h-14 sm:w-14">
                   <Icon name={r.icon} />
                 </span>
-                <h3 className="mt-5 font-display text-[23px] font-bold leading-tight tracking-[-0.01em]">{r.title}</h3>
-                <p className="mt-2.5 text-[15.5px] leading-relaxed text-ink-soft">{r.body}</p>
-              </article>
+                <div>
+                  <h3 className="font-display text-[20px] font-bold leading-tight tracking-[-0.01em] sm:mt-4 sm:text-[22px]">
+                    {r.title}
+                  </h3>
+                  <p className="mt-1.5 text-[15px] leading-relaxed text-ink-soft sm:mt-2 sm:text-[15.5px]">{r.body}</p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </section>

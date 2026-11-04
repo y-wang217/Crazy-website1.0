@@ -1,8 +1,8 @@
-// Wordmark built from the AP Academy logo: the deep blue square with the serif "AP".
+// Wordmark built from the AP Academy logo: the blue square with the serif "AP".
 export function LogoMark({ className = "" }: { className?: string }) {
   return (
     <span
-      className={`grid place-items-center rounded-[10px] bg-gradient-to-b from-[#5a78d8] to-blue-deep font-serif text-white ${className}`}
+      className={`grid place-items-center rounded-[10px] bg-gradient-to-b from-[#8aa4cf] to-blue-deep text-white ${className}`}
       aria-hidden="true"
       style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
     >
@@ -32,19 +32,25 @@ export function PhotoPlaceholder({
   className?: string;
 }) {
   return (
-    <div className={`placeholder relative flex flex-col items-center justify-center gap-2 text-center ${className}`}>
+    <div
+      role="img"
+      aria-label={`Placeholder: ${label}`}
+      className={`placeholder relative flex flex-col items-center justify-center gap-2 overflow-hidden p-4 text-center ${className}`}
+    >
       {initial ? (
-        <span className="font-display text-[64px] font-bold leading-none text-sky-300">{initial}</span>
+        <span className="grid h-20 w-20 place-items-center rounded-full bg-white/80 font-display text-[40px] font-bold leading-none text-blue">
+          {initial}
+        </span>
       ) : (
-        <svg viewBox="0 0 24 24" className="h-9 w-9 text-sky-300" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+        <svg viewBox="0 0 24 24" className="h-8 w-8 text-blue/60" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
           <path d="M4 8h3l2-3h6l2 3h3v11H4z" strokeLinejoin="round" />
           <circle cx="12" cy="13" r="3.5" />
         </svg>
       )}
-      <span className="rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-blue">
-        Placeholder
+      <span className="mt-1 rounded-full bg-white/85 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-blue">
+        Photo coming soon
       </span>
-      <span className="max-w-[18ch] text-[12.5px] leading-snug text-ink-soft">{label}</span>
+      <span className="max-w-[20ch] text-[12px] leading-snug text-ink-soft">{label}</span>
     </div>
   );
 }

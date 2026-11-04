@@ -1,20 +1,23 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* One family: off-white paper, soft blues, one strong blue, navy ink. */
+  /* One soft family: warm off-white paper, powder and dusty blues, one muted
+     blue for buttons and accents, navy ink. No saturated royal blue.
+     Contrast: white on --blue 5.8:1, --blue on paper 5.5:1, ink-soft on powder 5.7:1. */
   --color-paper: #fbf9f4;
-  --color-paper-deep: #f4f1e9;
-  --color-ink: #13203d;
-  --color-ink-soft: #46526b;
-  --color-ink-faint: #7a8396;
-  --color-sky-50: #f1f5fd;
-  --color-sky-100: #e3ebfb;
-  --color-sky-200: #c9d8f7;
-  --color-sky-300: #a7c0f1;
-  --color-blue: #2453d6;
-  --color-blue-hover: #1c45bb;
-  --color-blue-deep: #12308f;
-  --color-line: rgba(19, 32, 61, 0.1);
+  --color-paper-deep: #f3f0e8;
+  --color-ink: #1e2a44;
+  --color-ink-soft: #4b5a75;
+  --color-ink-faint: #6f7a90;
+  --color-sky-50: #f2f6fb; /* mist */
+  --color-sky-100: #e1eaf5; /* powder blue */
+  --color-sky-200: #cddbed;
+  --color-sky-300: #a9bfdc;
+  --color-dusty: #7b9cc4; /* dusty blue: decoration only, not text */
+  --color-blue: #46659e; /* muted blue: buttons, accents */
+  --color-blue-hover: #3c5889;
+  --color-blue-deep: #34507f;
+  --color-line: rgba(30, 42, 68, 0.1);
 
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
@@ -70,12 +73,12 @@ h3 {
 .btn-primary {
   background: var(--color-blue);
   color: #fff;
-  box-shadow: 0 10px 24px -12px rgba(36, 83, 214, 0.7);
+  box-shadow: 0 10px 24px -14px rgba(52, 80, 127, 0.7);
 }
 .btn-primary:hover {
   background: var(--color-blue-hover);
   transform: translateY(-2px);
-  box-shadow: 0 16px 28px -14px rgba(36, 83, 214, 0.8);
+  box-shadow: 0 16px 28px -16px rgba(52, 80, 127, 0.8);
 }
 .btn-ghost {
   background: #fff;
@@ -101,18 +104,34 @@ h3 {
 }
 .lift:hover {
   transform: translateY(-6px) rotate(var(--hover-rot, 0deg));
-  box-shadow: 0 24px 40px -24px rgba(19, 32, 61, 0.35);
+  box-shadow: 0 24px 40px -26px rgba(30, 42, 68, 0.3);
 }
 
-/* Clearly marked photo placeholder: striped, labelled, never mistaken for a real photo. */
+/* Clearly marked photo placeholder: soft dotted powder blue with a label, never
+   mistaken for a real photo. */
 .placeholder {
-  background-color: var(--color-sky-50);
-  background-image: repeating-linear-gradient(
-    -45deg,
-    transparent 0 12px,
-    rgba(36, 83, 214, 0.06) 12px 24px
-  );
-  border: 2px dashed var(--color-sky-300);
+  background-color: var(--color-sky-100);
+  background-image: radial-gradient(rgba(70, 101, 158, 0.16) 1.2px, transparent 1.4px);
+  background-size: 16px 16px;
+}
+
+/* Horizontal swipe rows on phones. */
+.swipe {
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 16px; /* snap cards to the page gutter, not the screen edge */
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.swipe::-webkit-scrollbar {
+  display: none;
+}
+.swipe > * {
+  scroll-snap-align: start;
+}
+@media (min-width: 640px) {
+  .swipe {
+    scroll-padding-inline: 24px;
+  }
 }
 
 /* ---------- Reveal on scroll ----------
@@ -128,6 +147,19 @@ h3 {
 }
 .js [data-reveal="scale"] {
   transform: translateY(18px) scale(0.96);
+}
+/* Photos: a slow settle from slightly zoomed and soft. */
+.js [data-reveal="photo"] {
+  transform: scale(1.05);
+  filter: blur(6px);
+  transition:
+    opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--delay, 0ms);
+}
+.js [data-reveal="photo"].is-in {
+  filter: none;
 }
 .js [data-reveal].is-in {
   opacity: 1;
@@ -215,6 +247,7 @@ h3 {
   .js [data-reveal] {
     opacity: 1;
     transform: none;
+    filter: none;
   }
   .js .doodle-draw * {
     stroke-dashoffset: 0 !important;

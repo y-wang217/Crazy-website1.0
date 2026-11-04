@@ -141,7 +141,7 @@ export function StickerIcon({
   const p = { fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   return (
     <span
-      className={`float grid h-14 w-14 place-items-center rounded-2xl bg-white text-blue shadow-[0_14px_28px_-16px_rgba(19,32,61,0.45)] ring-1 ring-line ${className}`}
+      className={`float grid h-14 w-14 place-items-center rounded-2xl bg-white text-blue shadow-[0_14px_28px_-16px_rgba(30,42,68,0.45)] ring-1 ring-line ${className}`}
       style={style}
       aria-hidden="true"
     >
