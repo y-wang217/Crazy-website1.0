@@ -119,7 +119,7 @@ export default function Tutors() {
               ))}
             </ol>
 
-            <a href="#book" className="btn btn-primary mt-8 w-full px-7 py-4 text-[16px] sm:w-auto">
+            <a href="#book" className="btn btn-warm mt-8 w-full px-7 py-4 text-[16px] sm:w-auto">
               Book a trial with a tutor <span className="arrow" aria-hidden="true">→</span>
             </a>
             <div className="mt-5 flex items-center gap-2">

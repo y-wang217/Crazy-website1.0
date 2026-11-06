@@ -19,6 +19,16 @@
   --color-blue-deep: #34507f;
   --color-line: rgba(30, 42, 68, 0.1);
 
+  /* Warm accents, used sparingly: free-trial CTAs, key labels, progress.
+     Never a section background. Navy on peach 7.2:1, navy on butter 9.4:1,
+     peach-ink on peach-50 5.3:1. */
+  --color-peach: #efa96c;
+  --color-peach-hover: #e99b57;
+  --color-peach-50: #fcefe3;
+  --color-peach-ink: #9a4f14; /* readable warm text */
+  --color-butter: #f2ce77;
+  --color-butter-50: #fbf3dd;
+
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
   --font-hand: var(--font-caveat), "Comic Sans MS", cursive;
@@ -79,6 +89,17 @@ h3 {
   background: var(--color-blue-hover);
   transform: translateY(-2px);
   box-shadow: 0 16px 28px -16px rgba(52, 80, 127, 0.8);
+}
+/* Free-trial CTAs: the one warm button on the page. */
+.btn-warm {
+  background: var(--color-peach);
+  color: var(--color-ink);
+  box-shadow: 0 10px 22px -14px rgba(154, 79, 20, 0.6);
+}
+.btn-warm:hover {
+  background: var(--color-peach-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 26px -16px rgba(154, 79, 20, 0.65);
 }
 .btn-ghost {
   background: #fff;
@@ -194,6 +215,21 @@ h3 {
 .js .doodle-draw.is-in polyline,
 .js .doodle-draw.is-in ellipse {
   stroke-dashoffset: 0;
+}
+
+/* Lesson log rows ease in when a subject tab changes. */
+@keyframes row-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.row-in {
+  animation: row-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+dialog[open] {
+  animation: row-in 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 /* Gentle float for small decorative stickers. */

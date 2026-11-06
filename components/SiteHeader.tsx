@@ -3,6 +3,7 @@ import { Wordmark } from "./Brand";
 const NAV = [
   { href: "#subjects", label: "Subjects" },
   { href: "#why", label: "Why AP Academy" },
+  { href: "#progress", label: "Progress" },
   { href: "#tutors", label: "Tutors" },
   { href: "#pricing", label: "Pricing" },
 ];
@@ -25,7 +26,7 @@ export default function SiteHeader() {
             </a>
           ))}
         </nav>
-        <a href="#book" className="btn btn-primary px-5 py-2.5 text-[14.5px] sm:px-6">
+        <a href="#book" className="btn btn-warm px-5 py-2.5 text-[14.5px] sm:px-6">
           Free trial
           <span className="arrow" aria-hidden="true">→</span>
         </a>

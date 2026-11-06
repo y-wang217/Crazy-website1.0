@@ -182,7 +182,7 @@ export default function Booking() {
           <div className="relative">
           <Sparkle className="float absolute -left-5 -top-7 z-10 w-9 text-blue" style={{ ["--rot" as string]: "-12deg" }} />
           <Sparkle className="float absolute -right-3 top-1/3 z-10 hidden w-6 text-blue sm:block" style={{ animationDelay: "-3s" }} />
-          <span className="absolute -right-2 -top-5 z-10 rotate-[5deg] rounded-full bg-blue px-4 py-2 text-[13px] font-bold text-white shadow-[0_12px_24px_-14px_rgba(52,80,127,0.7)]">
+          <span className="absolute -right-2 -top-5 z-10 rotate-[5deg] rounded-full bg-butter px-4 py-2 text-[13px] font-bold text-ink shadow-[0_12px_24px_-16px_rgba(154,79,20,0.55)]">
             Free · no commitment
           </span>
           <Squiggle className="absolute -bottom-6 left-10 z-10 w-28 rotate-[-6deg] text-blue" />
@@ -305,7 +305,7 @@ export default function Booking() {
                   />
                 </div>
 
-                <button type="submit" disabled={status === "sending"} className="btn btn-primary w-full px-6 py-4 text-[16.5px] disabled:opacity-60">
+                <button type="submit" disabled={status === "sending"} className={`btn ${kind === "trial" ? "btn-warm" : "btn-primary"} w-full px-6 py-4 text-[16.5px] disabled:opacity-60`}>
                   {status === "sending"
                     ? "Sending…"
                     : kind === "trial"

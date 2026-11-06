@@ -38,7 +38,7 @@ export default function Pricing() {
             <span className="font-display text-[56px] font-extrabold leading-none tracking-[-0.03em] text-blue-deep sm:text-[64px]">${PRICING.hourly}</span>
             <span className="text-[17px] font-semibold text-ink-soft">/ hour</span>
           </p>
-          <p className="mt-3 inline-block rounded-full bg-white px-3.5 py-1 text-[14px] font-bold text-blue">
+          <p className="mt-3 inline-block rounded-full bg-butter px-3.5 py-1 text-[14px] font-bold text-ink">
             Your first lesson is free
           </p>
           <ul className="mt-6 space-y-3 text-[15px] leading-snug text-ink-soft sm:mt-7 sm:text-[15.5px]">
@@ -47,7 +47,7 @@ export default function Pricing() {
             <li className="flex gap-3"><Check />Every lesson logged within 24 hours</li>
             <li className="flex gap-3"><Check />Stop any time, no packages</li>
           </ul>
-          <a href="#book" className="btn btn-primary mt-8 w-full px-6 py-4 text-[16px] sm:mt-9 sm:w-auto">
+          <a href="#book" className="btn btn-warm mt-8 w-full px-6 py-4 text-[16px] sm:mt-9 sm:w-auto">
             Book a free trial lesson <span className="arrow" aria-hidden="true">→</span>
           </a>
         </article>

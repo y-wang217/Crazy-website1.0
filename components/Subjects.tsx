@@ -25,7 +25,7 @@ function SubjectCard({ subject, index }: { subject: Subject; index: number }) {
           {subject.codes}
         </span>
         {flagship && (
-          <span className="rotate-[4deg] rounded-full bg-blue px-3.5 py-1 text-[12px] font-bold uppercase tracking-[0.1em] text-white">
+          <span className="rotate-[4deg] rounded-full bg-butter px-3.5 py-1 text-[12px] font-bold uppercase tracking-[0.1em] text-ink">
             ★ Flagship
           </span>
         )}

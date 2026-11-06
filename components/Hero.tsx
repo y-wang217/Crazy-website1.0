@@ -35,7 +35,7 @@ export default function Hero() {
             Math & physics that finally{" "}
             <span className="relative inline-block text-blue">
               click
-              <Underline draw className="absolute -bottom-2 left-0 h-4 w-full text-sky-300 sm:-bottom-3 sm:h-5" style={d(700)} />
+              <Underline draw className="absolute -bottom-2 left-0 h-4 w-full text-peach sm:-bottom-3 sm:h-5" style={d(700)} />
             </span>
             .
           </h1>
@@ -46,7 +46,7 @@ export default function Hero() {
           </p>
 
           <div data-reveal style={d(260)} className="mt-8 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:items-center">
-            <a href="#book" className="btn btn-primary px-7 py-4 text-[16.5px]">
+            <a href="#book" className="btn btn-warm px-7 py-4 text-[16.5px]">
               Book a free trial lesson
               <span className="arrow" aria-hidden="true">→</span>
             </a>
@@ -89,7 +89,7 @@ export default function Hero() {
           </div>
 
           <div
-            className="float absolute -top-4 left-[14%] grid h-[88px] w-[88px] place-items-center rounded-full bg-blue text-center text-white shadow-[0_14px_30px_-14px_rgba(52,80,127,0.7)] sm:h-[100px] sm:w-[100px]"
+            className="float absolute -top-4 left-[14%] grid h-[88px] w-[88px] place-items-center rounded-full bg-butter text-center text-ink shadow-[0_14px_30px_-16px_rgba(154,79,20,0.55)] sm:h-[100px] sm:w-[100px]"
             style={{ ["--rot" as string]: "-10deg" }}
           >
             <span className="font-display text-[12.5px] font-bold uppercase leading-tight tracking-wide">
@@ -102,7 +102,7 @@ export default function Hero() {
           </div>
 
           <div className="pointer-events-none absolute -bottom-14 left-[30%] hidden items-end gap-1 text-blue sm:flex">
-            <CurlyArrow draw className="w-16 -scale-x-100 rotate-[200deg] text-dusty" style={d(900)} />
+            <CurlyArrow draw className="w-16 -scale-x-100 rotate-[200deg] text-peach" style={d(900)} />
             <span className="font-hand text-[24px] leading-none">your tutor</span>
           </div>
         </div>
