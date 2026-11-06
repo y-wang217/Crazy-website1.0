@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { REASONS } from "@/content/site";
-import { PhotoPlaceholder } from "./Brand";
 import { CurlyArrow, Sparkle } from "./Doodles";
 
 const d = (ms: number) => ({ ["--delay" as string]: `${ms}ms` }) as React.CSSProperties;
@@ -45,32 +44,29 @@ export default function WhyUs() {
     <section id="why" className="relative overflow-hidden py-16 lg:py-24">
       <div className="mx-auto grid max-w-[1200px] items-center gap-12 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16 lg:px-8">
         {/* Photo collage */}
-        <div className="relative order-2 mx-auto w-full max-w-[460px] lg:order-1">
-          <div className="blob absolute -inset-[6%] bg-sky-100" aria-hidden="true" />
-          <Sparkle className="float absolute -top-2 right-[8%] w-8 text-dusty" style={{ ["--rot" as string]: "14deg" }} />
+        <div className="relative order-2 mx-auto w-full max-w-[540px] pb-14 lg:order-1">
+          <div className="blob absolute -inset-x-[6%] -bottom-[2%] -top-[10%] bg-sky-100" aria-hidden="true" />
+          <Sparkle className="float absolute -top-6 right-[6%] w-8 text-dusty" style={{ ["--rot" as string]: "14deg" }} />
 
           <div data-reveal="photo" className="relative">
-            <PhotoPlaceholder
-              label="A real student in a live online lesson"
-              className="aspect-[5/4] rounded-[120px_36px_120px_36px] border-[6px] border-white sm:aspect-[4/4]"
-            />
-          </div>
-
-          <div data-reveal="photo" style={d(200)} className="absolute -bottom-8 -right-2 w-[44%] sm:-right-8">
-            <div className="lift relative aspect-square overflow-hidden rounded-full border-[6px] border-white shadow-[0_20px_40px_-26px_rgba(30,42,68,0.5)]">
+            <div className="lift relative aspect-[16/10] overflow-hidden rounded-[90px_28px_90px_28px] border-[6px] border-white shadow-[0_24px_48px_-30px_rgba(30,42,68,0.5)] sm:rounded-[120px_36px_120px_36px]">
               <Image
-                src="/charlie-portrait.jpg"
-                alt="Mr. Charlie smiling"
+                src="/lesson-online.jpg"
+                alt="A live online AP Academy lesson: Mr. Charlie works through exponent equations on a shared whiteboard with a student"
                 fill
-                sizes="200px"
-                className="object-cover object-[50%_30%]"
+                sizes="(min-width: 1024px) 540px, 92vw"
+                className="object-cover object-[60%_50%]"
               />
             </div>
+            <span className="absolute -top-4 left-6 rotate-[-3deg] rounded-xl bg-white px-3.5 py-2 text-[13px] font-bold text-ink shadow-[0_12px_24px_-16px_rgba(30,42,68,0.5)]">
+              <span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-peach align-middle" aria-hidden="true" />
+              Live lesson, shared whiteboard
+            </span>
           </div>
 
-          <div className="pointer-events-none absolute -bottom-16 left-0 flex items-center gap-1 sm:-left-4">
-            <span className="max-w-[16ch] font-hand text-[21px] leading-tight text-blue">the founder still teaches every week</span>
-            <CurlyArrow draw className="w-12 -rotate-[30deg] text-dusty" style={d(500)} />
+          <div className="pointer-events-none absolute bottom-0 right-2 flex items-center gap-1">
+            <CurlyArrow draw className="w-12 -scale-y-100 rotate-[150deg] text-peach" style={d(500)} />
+            <span className="max-w-[18ch] font-hand text-[21px] leading-tight text-blue">the founder still teaches every week</span>
           </div>
         </div>
 

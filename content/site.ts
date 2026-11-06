@@ -118,6 +118,7 @@ export type Tutor = {
 // Confirmed active staff only (Notion Teachers Tracker, Nov 2026).
 // Charlie's credentials: current site (Credentials.tsx, config TEACHERS).
 // Noah and Kuby: résumé summaries on their Notion staff pages (received Oct 9, 2026).
+// Headshots supplied by Charlie (Nov 6, 2026), cropped from one group image.
 export const TUTORS: Tutor[] = [
   {
     id: "charlie",
@@ -125,7 +126,7 @@ export const TUTORS: Tutor[] = [
     role: "Founder & lead tutor",
     headline: "Founder, 8+ years",
     intro: "Waterloo Software Engineering grad. Energetic, approachable, and still teaches every week.",
-    photo: "/charlie-portrait.jpg",
+    photo: "/tutor-charlie.jpg",
     credentials: [
       "University of Waterloo, Software Engineering",
       "8+ years tutoring",
@@ -139,7 +140,7 @@ export const TUTORS: Tutor[] = [
     role: "Tutor",
     headline: "Waterloo Engineering grad",
     intro: "Electrical Engineering with Dean's Honours, and a former Waterloo teaching assistant.",
-    photo: null,
+    photo: "/tutor-noah.jpg",
     credentials: [
       "University of Waterloo, Electrical Engineering (BASc), Dean's Honours",
       "Former University of Waterloo teaching assistant",
@@ -153,7 +154,7 @@ export const TUTORS: Tutor[] = [
     role: "Tutor",
     headline: "7+ years, senior math",
     intro: "BCIT Electrical Engineering grad. Senior math, IB Math and SAT/ACT prep.",
-    photo: null,
+    photo: "/tutor-kuby.jpg",
     credentials: [
       "BCIT, Electrical Engineering (BSc)",
       "7+ years tutoring senior math",

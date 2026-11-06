@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { PRICING } from "@/content/site";
-import { PhotoPlaceholder } from "./Brand";
 import { CurlyArrow, SineWave, Sparkle, StickerIcon, Underline } from "./Doodles";
 
 const FACTS = [
@@ -82,10 +81,15 @@ export default function Hero() {
           </div>
 
           <div data-reveal="scale" style={d(380)} className="absolute -left-2 bottom-[14%] w-[40%] sm:-left-6">
-            <PhotoPlaceholder
-              label="A real AP Academy student"
-              className="aspect-square rotate-[-6deg] rounded-[28px] border-4 border-white shadow-[0_20px_40px_-26px_rgba(30,42,68,0.45)]"
-            />
+            <div className="lift relative aspect-square rotate-[-6deg] overflow-hidden rounded-[28px] border-4 border-white bg-white shadow-[0_20px_40px_-26px_rgba(30,42,68,0.45)] [--hover-rot:-2deg]">
+              <Image
+                src="/lesson-whiteboard.jpg"
+                alt="Exponent and logarithm working from a real AP Academy lesson whiteboard"
+                fill
+                sizes="(min-width: 640px) 210px, 40vw"
+                className="object-cover object-[50%_70%]"
+              />
+            </div>
           </div>
 
           <div
