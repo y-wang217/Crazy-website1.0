@@ -8,10 +8,11 @@ import {
   improvement,
   type SubjectKey,
 } from "@/content/progress-public";
+import { PORTAL_LOGIN_URL } from "@/content/site";
 
-// Where enrolled students and linked parents sign in. The portal decides what
-// each account may see; this site never fetches or embeds portal data.
-const PORTAL_SIGN_IN = "https://www.apacademy.ca/login?next=%2Ftracker";
+// Enrolled students and linked parents sign in through the existing portal. The
+// portal decides what each account may see; this site never fetches portal data.
+const PORTAL_SIGN_IN = PORTAL_LOGIN_URL;
 
 const d = (ms: number) => ({ ["--delay" as string]: `${ms}ms` }) as React.CSSProperties;
 const shortDate = (date: string) => date.replace(/, \d{4}$/, "");

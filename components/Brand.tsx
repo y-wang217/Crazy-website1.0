@@ -1,22 +1,35 @@
-// Wordmark built from the AP Academy logo: the blue square with the serif "AP".
-export function LogoMark({ className = "" }: { className?: string }) {
-  return (
-    <span
-      className={`grid place-items-center rounded-[10px] bg-gradient-to-b from-[#8aa4cf] to-blue-deep text-white ${className}`}
-      aria-hidden="true"
-      style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-    >
-      AP
-    </span>
-  );
-}
+import Image from "next/image";
 
-export function Wordmark() {
+// The supplied AP Academy logo (Nov 2026), unaltered apart from its flat white
+// background being made transparent. Two crops of the same artwork:
+//   header: the AP mark and "AP Academy" (856 × 579)
+//   full:   the same plus the "Helping ambitions find their path" tagline (936 × 635)
+// Always size by height with width auto so the proportions never change.
+const LOGOS = {
+  header: { src: "/ap-academy-logo-header.png", width: 856, height: 579 },
+  full: { src: "/ap-academy-logo.png", width: 936, height: 635 },
+} as const;
+
+export function Logo({
+  variant = "header",
+  className = "",
+  priority = false,
+}: {
+  variant?: keyof typeof LOGOS;
+  className?: string;
+  priority?: boolean;
+}) {
+  const logo = LOGOS[variant];
   return (
-    <span className="flex items-center gap-2.5">
-      <LogoMark className="h-9 w-9 text-[17px] tracking-tight" />
-      <span className="font-display text-[19px] font-bold tracking-tight text-ink">AP Academy</span>
-    </span>
+    <Image
+      src={logo.src}
+      width={logo.width}
+      height={logo.height}
+      alt={variant === "full" ? "AP Academy: Helping ambitions find their path" : "AP Academy"}
+      priority={priority}
+      sizes={variant === "full" ? "200px" : "80px"}
+      className={`w-auto ${className}`}
+    />
   );
 }
 

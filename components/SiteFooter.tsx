@@ -1,13 +1,13 @@
 import { CONTACT } from "@/content/site";
-import { Wordmark } from "./Brand";
+import { Logo } from "./Brand";
 
 export default function SiteFooter() {
   return (
     <footer className="mx-auto max-w-[1200px] px-4 pb-10 pt-14 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-8 border-t border-line pt-10 md:flex-row md:items-start md:justify-between">
         <div>
-          <Wordmark />
-          <p className="mt-3 max-w-[36ch] text-[15px] leading-relaxed text-ink-soft">
+          <Logo variant="full" className="h-[118px] sm:h-[132px]" />
+          <p className="mt-4 max-w-[36ch] text-[15px] leading-relaxed text-ink-soft">
             Personalized 1-on-1 online tutoring for Ontario grade 11 and 12 students.
           </p>
         </div>
