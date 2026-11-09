@@ -40,7 +40,8 @@ export default function LoginDialog() {
     const email = String(new FormData(e.currentTarget).get("email") ?? "").trim();
     setStatus("sending");
     try {
-      const result = await requestLoginLink(email);
+      // Integration point: lib/auth.ts. The dashboard lives at /tracker in the existing system.
+      const result = await requestLoginLink({ email, next: "/tracker", marketingConsent: false });
       setStatus(result.status);
     } catch {
       setStatus("error");
@@ -91,6 +92,7 @@ export default function LoginDialog() {
           <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">
             Enter your email to access your AP Academy learning dashboard.
           </p>
+          <p className="mt-1.5 text-[13.5px] text-ink-faint">We&apos;ll email you a sign-in link. No password needed.</p>
 
           <form ref={formRef} onSubmit={onSubmit} className="mt-6">
             <label htmlFor="login-email" className="text-[14px] font-semibold text-ink">
@@ -133,8 +135,7 @@ export default function LoginDialog() {
             )}
             {status === "sent" && (
               <p className="mt-4 rounded-2xl bg-sky-50 px-4 py-3.5 text-[14.5px] leading-snug text-ink ring-1 ring-sky-200">
-                Check your inbox. If this email belongs to an enrolled student or parent, a secure sign-in link is on
-                its way.
+                Check your email for your sign-in link. Open it on this device to sign in.
               </p>
             )}
             {status === "error" && (

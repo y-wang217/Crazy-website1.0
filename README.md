@@ -13,8 +13,10 @@ npm run dev        # http://localhost:3000
 
 ## Student and parent login
 
-The header "Log in" button opens a login popup (`components/LoginDialog.tsx`).
-It is frontend only: no backend is connected, nothing typed is sent or stored,
-and submitting shows "Student portal login is being updated." To connect a
-real magic-link or one-time-code sign-in, replace `requestLoginLink` in
-`lib/auth.ts`; the comments there walk through it.
+The header "Log in" button opens a login popup (`components/LoginDialog.tsx`),
+the new design's front end for AP Academy's existing Magic Link sign-in. It is
+frontend only until migration: nothing typed is sent or stored, and submitting
+shows "Student portal login is being updated." At migration, paste the existing
+`signInWithOtp` call (from `apps/landing/app/login/login-form.tsx`) into
+`requestLoginLink` in `lib/auth.ts`; the comments there give the exact code.
+The existing backend and `/auth/callback` stay as they are.
