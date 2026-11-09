@@ -1,5 +1,5 @@
-import { PORTAL_LOGIN_URL } from "@/content/site";
 import { Logo } from "./Brand";
+import LoginDialog from "./LoginDialog";
 
 const NAV = [
   { href: "#subjects", label: "Subjects" },
@@ -8,15 +8,6 @@ const NAV = [
   { href: "#tutors", label: "Tutors" },
   { href: "#pricing", label: "Pricing" },
 ];
-
-function UserIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-[19px] w-[19px] shrink-0" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" aria-hidden="true">
-      <circle cx="12" cy="8" r="3.6" />
-      <path d="M5 20c.9-3.6 3.7-5.6 7-5.6s6.1 2 7 5.6" />
-    </svg>
-  );
-}
 
 export default function SiteHeader() {
   return (
@@ -39,16 +30,8 @@ export default function SiteHeader() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
-          {/* Existing students and linked parents only: goes to the portal's own sign-in. */}
-          <a
-            href={PORTAL_LOGIN_URL}
-            aria-label="Student and parent log in"
-            title="Student and parent log in"
-            className="btn h-[42px] w-[42px] border-[1.5px] border-blue-deep/30 bg-white/70 text-[14.5px] text-blue-deep hover:border-blue-deep/60 hover:bg-white sm:w-auto sm:gap-2 sm:px-4"
-          >
-            <UserIcon />
-            <span className="hidden sm:inline">Log in</span>
-          </a>
+          {/* Existing students and linked parents: opens the login popup (lib/auth.ts is the integration point). */}
+          <LoginDialog />
           <a href="#book" className="btn btn-warm h-[42px] px-5 text-[14.5px] sm:px-6">
             Free trial
             <span className="arrow" aria-hidden="true">→</span>

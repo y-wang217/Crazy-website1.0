@@ -66,6 +66,12 @@ h3 {
   outline-offset: 3px;
   border-radius: 10px;
 }
+/* Text fields draw their own focus ring (border + soft glow). */
+input:not([type="radio"]):focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -230,6 +236,28 @@ h3 {
 
 dialog[open] {
   animation: row-in 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Login popup: a bottom sheet that slides up on phones, a small popover under the header from 640px. */
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+}
+.login-dialog[open] {
+  animation: sheet-up 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@media (min-width: 640px) {
+  .login-dialog[open] {
+    animation: pop-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform-origin: top right;
+  }
 }
 
 /* Gentle float for small decorative stickers. */

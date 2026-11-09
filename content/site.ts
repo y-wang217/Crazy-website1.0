@@ -15,11 +15,7 @@ export const CONTACT = {
   calendly: "https://calendly.com/y-wang217/30min",
 };
 
-// Student and parent sign-in. This is the existing AP Academy portal login
-// (magic link on apacademy.ca, then the Student Tracker at /tracker, where each
-// account only sees what it is linked to). Change this one line if the login
-// moves. This site never builds its own login or reads portal data.
-export const PORTAL_LOGIN_URL = "https://www.apacademy.ca/login?next=%2Ftracker";
+// Student and parent sign-in lives in lib/auth.ts (the login popup's integration point).
 
 // Where the booking form sends its data. Paste a form endpoint that accepts a
 // JSON POST (for example a Formspree form URL). While empty, the form opens a

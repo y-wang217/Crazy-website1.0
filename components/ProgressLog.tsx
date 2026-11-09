@@ -8,11 +8,8 @@ import {
   improvement,
   type SubjectKey,
 } from "@/content/progress-public";
-import { PORTAL_LOGIN_URL } from "@/content/site";
+import { OPEN_LOGIN_EVENT } from "./LoginDialog";
 
-// Enrolled students and linked parents sign in through the existing portal. The
-// portal decides what each account may see; this site never fetches portal data.
-const PORTAL_SIGN_IN = PORTAL_LOGIN_URL;
 
 const d = (ms: number) => ({ ["--delay" as string]: `${ms}ms` }) as React.CSSProperties;
 const shortDate = (date: string) => date.replace(/, \d{4}$/, "");
@@ -279,9 +276,16 @@ export default function ProgressLog() {
           </div>
           <p className="mt-6 border-t border-line pt-5 text-[14px] text-ink-soft">
             Already a student or a linked parent?{" "}
-            <a href={PORTAL_SIGN_IN} className="font-semibold text-blue-deep underline-offset-4 hover:underline">
-              Sign in to your dashboard
-            </a>
+            <button
+              type="button"
+              onClick={() => {
+                closeDialog();
+                window.dispatchEvent(new Event(OPEN_LOGIN_EVENT));
+              }}
+              className="font-semibold text-blue-deep underline-offset-4 hover:underline"
+            >
+              Log in
+            </button>
           </p>
         </div>
       </dialog>
